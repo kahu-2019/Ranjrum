@@ -4,7 +4,7 @@ import Display from './Display'
 
 const App = () => {
   return (
-    <div>
+    <div className="hello">
       <h1>React </h1>
       <Display />
       <Grid />

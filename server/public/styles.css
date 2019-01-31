@@ -20,7 +20,8 @@ button:active {
 }
 
 .display-item{
-  background-color:  greenyellow;
+  grid-template-columns: auto;
+  /* -webkit-animation: color-change-5x 8s linear infinite alternate both; */
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 20px;
   font-size: 30px;
@@ -29,8 +30,49 @@ button:active {
 
 .display-container{
    display: grid;
-  grid-template-columns: auto;
-  background-color: rgb(27, 28, 29);
+  border-color:black;
   padding: 3px; 
-  background-color: rosybrown
+ 
 }
+
+.hello{
+  
+ -webkit-animation: color-change-5x 8s linear infinite alternate both; 
+
+}
+
+@-webkit-keyframes color-change-5x {
+  0% {
+    background: #19dcea;
+  }
+  25% {
+    background: #b22cff;
+  }
+  50% {
+    background: #ea2222;
+  }
+  75% {
+    background: #f5be10;
+  }
+  100% {
+    background: #3bd80d;
+  }
+}
+@keyframes color-change-5x {
+  0% {
+    background: #19dcea;
+  }
+  25% {
+    background: #b22cff;
+  }
+  50% {
+    background: #ea2222;
+  }
+  75% {
+    background: #f5be10;
+  }
+  100% {
+    background: #3bd80d;
+  }
+}
+

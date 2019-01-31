@@ -108,22 +108,107 @@ var _Grid = __webpack_require__(/*! ./Grid */ "./client/components/Grid.jsx");
 
 var _Grid2 = _interopRequireDefault(_Grid);
 
+var _Display = __webpack_require__(/*! ./Display */ "./client/components/Display.jsx");
+
+var _Display2 = _interopRequireDefault(_Display);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
   return _react2.default.createElement(
     'div',
-    null,
+    { className: 'hello' },
     _react2.default.createElement(
       'h1',
       null,
-      'React development has begun!'
+      'React '
     ),
+    _react2.default.createElement(_Display2.default, null),
     _react2.default.createElement(_Grid2.default, null)
   );
 };
 
 exports.default = App;
+
+/***/ }),
+
+/***/ "./client/components/Display.jsx":
+/*!***************************************!*\
+  !*** ./client/components/Display.jsx ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Display = function (_React$Component) {
+    _inherits(Display, _React$Component);
+
+    function Display(props) {
+        _classCallCheck(this, Display);
+
+        var _this = _possibleConstructorReturn(this, (Display.__proto__ || Object.getPrototypeOf(Display)).call(this, props));
+
+        _this.randomHexColor = function () {
+            return "#" + Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0);
+        };
+
+        _this.state = {
+            style: {
+                backgroundColor: _this.randomHexColor()
+            }
+        };
+        return _this;
+    }
+
+    _createClass(Display, [{
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var clickHandler = function clickHandler(evt) {
+
+                _this2.setState({
+                    style: { backgroundColor: _this2.randomHexColor() }
+
+                });
+            };
+
+            return _react2.default.createElement(
+                "div",
+                { className: "display-container" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "display-item", style: this.state.style, onClick: clickHandler },
+                    "effects"
+                )
+            );
+        }
+    }]);
+
+    return Display;
+}(_react2.default.Component);
+
+exports.default = Display;
 
 /***/ }),
 
