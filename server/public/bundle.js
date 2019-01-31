@@ -104,17 +104,87 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Grid = __webpack_require__(/*! ./Grid */ "./client/components/Grid.jsx");
+
+var _Grid2 = _interopRequireDefault(_Grid);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
   return _react2.default.createElement(
-    'h1',
+    'div',
     null,
-    'React development has begun!'
+    _react2.default.createElement(
+      'h1',
+      null,
+      'React development has begun!'
+    ),
+    _react2.default.createElement(_Grid2.default, null)
   );
 };
 
 exports.default = App;
+
+/***/ }),
+
+/***/ "./client/components/Grid.jsx":
+/*!************************************!*\
+  !*** ./client/components/Grid.jsx ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Grid = function Grid() {
+  return _react2.default.createElement(
+    "div",
+    { className: "grid-container" },
+    _react2.default.createElement(
+      "div",
+      { className: "grid-item" },
+      "b"
+    ),
+    _react2.default.createElement(
+      "div",
+      { className: "grid-item" },
+      "b"
+    ),
+    _react2.default.createElement(
+      "div",
+      { className: "grid-item" },
+      "b"
+    ),
+    _react2.default.createElement(
+      "div",
+      { className: "grid-item" },
+      "b"
+    ),
+    _react2.default.createElement(
+      "div",
+      { className: "grid-item" },
+      "b"
+    ),
+    _react2.default.createElement(
+      "div",
+      { className: "grid-item" },
+      "b"
+    )
+  );
+};
+
+exports.default = Grid;
 
 /***/ }),
 

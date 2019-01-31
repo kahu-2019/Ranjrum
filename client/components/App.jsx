@@ -1,8 +1,12 @@
 import React from 'react'
+import Grid from './Grid'
 
 const App = () => {
   return (
-    <h1>React development has begun!</h1>
+    <div>
+      <h1>React development has begun!</h1>
+      <Grid />
+    </div>
   )
 }
 
