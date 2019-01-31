@@ -10,9 +10,16 @@ const Grid = () => {
             <button className="grid-item">Snare</button>
             <button className="grid-item">Array.from()</button>
             <button className="grid-item">Arpo</button>
+            
         </div>
+    
+
     )
+
+
 }
+
+
 
 
 export default Grid
