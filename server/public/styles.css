@@ -2,15 +2,19 @@
 .grid-container{
   display: grid;
   grid-template-columns: auto auto auto;
-  background-color: #2196F3;
-  padding: 10px;
+  background-color: rgb(27, 28, 29);
+  padding: 3px;
 }
 
 
 .grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color:  #d3d3d3;
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 20px;
   font-size: 30px;
   text-align: center;
+}
+
+button:active {
+  background-color: aquamarine;
 }

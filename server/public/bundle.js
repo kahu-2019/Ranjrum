@@ -138,7 +138,7 @@ exports.default = App;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -148,40 +148,40 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Grid = function Grid() {
-  return _react2.default.createElement(
-    "div",
-    { className: "grid-container" },
-    _react2.default.createElement(
-      "div",
-      { className: "grid-item" },
-      "b"
-    ),
-    _react2.default.createElement(
-      "div",
-      { className: "grid-item" },
-      "b"
-    ),
-    _react2.default.createElement(
-      "div",
-      { className: "grid-item" },
-      "b"
-    ),
-    _react2.default.createElement(
-      "div",
-      { className: "grid-item" },
-      "b"
-    ),
-    _react2.default.createElement(
-      "div",
-      { className: "grid-item" },
-      "b"
-    ),
-    _react2.default.createElement(
-      "div",
-      { className: "grid-item" },
-      "b"
-    )
-  );
+    return _react2.default.createElement(
+        "div",
+        { className: "grid-container" },
+        _react2.default.createElement(
+            "button",
+            { className: "grid-item" },
+            "Bass Drum"
+        ),
+        _react2.default.createElement(
+            "button",
+            { className: "grid-item" },
+            "Hi-hat"
+        ),
+        _react2.default.createElement(
+            "button",
+            { className: "grid-item" },
+            "I'm thinking"
+        ),
+        _react2.default.createElement(
+            "button",
+            { className: "grid-item" },
+            "Snare"
+        ),
+        _react2.default.createElement(
+            "button",
+            { className: "grid-item" },
+            "Array.from()"
+        ),
+        _react2.default.createElement(
+            "button",
+            { className: "grid-item" },
+            "Arpo"
+        )
+    );
 };
 
 exports.default = Grid;
