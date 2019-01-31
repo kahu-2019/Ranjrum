@@ -1,11 +1,14 @@
 import React from 'react'
+
 import Grid from './Grid'
+import Beat from './Beat'
 
 const App = () => {
   return (
     <div>
-      <h1>React development has begun!</h1>
+      <h1>React beats have begun!</h1>
       <Grid />
+      <Beat />
     </div>
   )
 }
