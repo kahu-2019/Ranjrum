@@ -8,7 +8,6 @@ const App = () => {
     <div>
       <h1>React beats have begun!</h1>
       <Grid />
-      <Beat />
     </div>
   )
 }
