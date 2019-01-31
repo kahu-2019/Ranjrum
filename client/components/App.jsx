@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Grid from './Grid'
-import Beat from './Beat'
 
 const App = () => {
   return (

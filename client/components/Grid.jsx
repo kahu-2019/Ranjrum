@@ -1,53 +1,199 @@
 import React from 'react'
-import DrumMachine from 'react-drum-machine'
 
-const song = {
-    "title": "example",
-    "beatpermeasure": 4,
-    "bpm": 79,
-    "divisionperbeat": 4,
-    "instruments": [
-        {
-            "title": "hihat",
-            "image": "img/hihat.png",
-            "sound": "https://content.dropboxapi.com/1/files/auto/CyCdh_K3ClHat-01.wav",
-            "bearer": "JfnDpAnZcQ8AAAAAAAABYbt6Zvq6-U10DeFgzcZEbz7XYZrTv9ugPuuRl0ai9BFR",
-            "bits": [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
-        },
-        {
-            "title": "snare",
-            "image": "http://i.imgur.com/NwDw9lZ.png",
-            "sound": "https://content.dropboxapi.com/1/files/auto/snare.mp3",
-            "bearer": "JfnDpAnZcQ8AAAAAAAABYbt6Zvq6-U10DeFgzcZEbz7XYZrTv9ugPuuRl0ai9BFR",
-            "bits": [0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1]
-        },
-        {
-            "title": "kick",
-            "image": "http://i.imgur.com/CmsdE9k.png",
-            "sound": "https://content.dropboxapi.com/1/files/auto/kick.mp3",
-            "bearer": "JfnDpAnZcQ8AAAAAAAABYbt6Zvq6-U10DeFgzcZEbz7XYZrTv9ugPuuRl0ai9BFR",
-            "bits": [1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1]
-        }
-    ]
+const sound = {
+    "Q": {
+        track: '/sounds/bassdrum.mp3',
+        desc: "BassDrum"
+    },
+    "W": {
+        track: "/sounds/hi-hat.mp3",
+        desc: "Hi-hat"
+    },
+    "E": {
+        track: "/sounds/im-thinking.mp3",
+        desc: "I'm-thinking"
+    },
+    "A": {
+        track: "/sounds/snare.mp3",
+        desc: "Snare"
+    },
+    "S": {
+        track: "/sounds/array-from.mp3",
+        desc: "Array.from()"
+    },
+    "D": {
+        track: "/sounds/arpo.mp3",
+        desc: "Arpo"
+    }
 }
 
-class Grid extends React.Component {
+const Title = (props) => {
+    return (
+        <div className="title">
+            <div className="titleContainer">
+                <h1>{props.text}</h1>
+                <h5>{props.subtext}</h5>
+            </div>
+        </div>
+    );
+};
+
+const Display = (props) => {
+    return (
+        <div id="display">
+            {props.output}
+        </div>
+    );
+};
+
+class DrumPad extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.handleOnClick = this.handleOnClick.bind(this);
     }
+
+    handleOnClick(event) {
+        const id = event.target.id.slice(-1);
+        const ref = event.target.children[0];
+        ref.pause();
+        ref.currentTime = 0;
+        ref.play();
+        window.display.setOutput(id);
+    }
+
     render() {
         return (
-            <div className="grid-container">
-                <button onClick={() => PubSub.publish('drum', { action: 'play' })} className="grid-item" >Bass Drum</button>
-                <button onClick={() => PubSub.publish('drum', { action: 'stop' })} className="grid-item">Hi-hat</button>
-                {/* <button className="grid-item">I'm thinking</button>
-                <button className="grid-item">Snare</button>
-                <button className="grid-item">Array.from()</button>
-                <button className="grid-item">Arpo</button> */}
-                <DrumMachine song={song} />
+            <div className="drum-pad-container">
+                <div id={this.props.drumPadId} className="drum-pad" onClick={this.handleOnClick}>
+                    <audio className="clip" src={this.props.sndSrc} id={this.props.clipId}>
+                        Your browser does not support the audio element.
+                </audio>
+                    {this.props.text}
+                </div>
             </div>
-        )
+
+        );
     }
 }
+
+const ids = ["Q", "W", "E", "A", "S", "D"];
+const pads = ids.map((desc) => <DrumPad key={"pad_" + desc}
+    drumPadId={"uid" + desc}
+    clipId={desc}
+    sndSrc={sound[desc].track}
+    text={desc} />);
+
+class Grid extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { output: "" };
+        window.display = this;
+        this.setOutput = this.setOutput.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.playDrum = this.playDrum.bind(this);
+        this.playSound = this.playSound.bind(this);
+    }
+
+    setOutput(id) {
+        this.setState({ output: sound[id].desc });
+    }
+
+    handleKeyDown(event) {
+
+        let keyPressed = event.key;
+        keyPressed = keyPressed.toUpperCase();
+
+        if (keyPressed === "q" || "Q" || "w" || "W"
+            || "e" || "E" || "a" || "A"
+            || "s" || "S" || "d" || "D") {
+
+            this.playDrum(keyPressed);
+
+
+        }
+    }
+
+    playDrum(k) {
+        switch (k) {
+            case "Q":
+                var elem = document.getElementById("Q");
+                this.playSound(elem);
+                this.setState({ output: sound["Q"].desc });
+                break;
+            case "W":
+                var elem = document.getElementById("W");
+                this.playSound(elem);
+                this.setState({ output: sound["W"].desc });
+                break;
+            case "E":
+                var elem = document.getElementById("E");
+                this.playSound(elem);
+                this.setState({ output: sound["E"].desc });
+                break;
+            case "A":
+                var elem = document.getElementById("A");
+                this.playSound(elem);
+                this.setState({ output: sound["A"].desc });
+                break;
+            case "S":
+                var elem = document.getElementById("S");
+                this.playSound(elem);
+                this.setState({ output: sound["S"].desc });
+                break;
+            case "D":
+                var elem = document.getElementById("D");
+                this.playSound(elem);
+                this.setState({ output: sound["D"].desc });
+                break;
+        }
+    }
+
+    playSound(el) {
+        el.pause();
+        el.currentTime = 0;
+        el.play();
+    }
+
+    render() {
+        return (
+            <div id="drum-machine" onKeyDown={this.handleKeyDown} tabIndex="0" >
+                <Title text="Drum Machine"
+                    subtext="" />
+
+                <div className="main-container">
+                    <Display output={this.state.output} />
+                    {pads}
+                </div>
+
+            </div>
+        );
+    }
+
+    componentDidMount() {
+        const app = document.getElementById("drum-machine");
+        app.focus();
+    }
+}
+
+
+// class Grid extends React.Component {
+//     constructor(props) {
+//         super(props)
+//     }
+//     render() {
+//         return (
+//             <div className="grid-container">
+//                 <button onClick={() => PubSub.publish('drum', { action: 'play' })} className="grid-item" >Bass Drum</button>
+//                 <button onClick={() => PubSub.publish('drum', { action: 'stop' })} className="grid-item">Hi-hat</button>
+//                 {/* <button className="grid-item">I'm thinking</button>
+//                 <button className="grid-item">Snare</button>
+//                 <button className="grid-item">Array.from()</button>
+//                 <button className="grid-item">Arpo</button> */}
+//                 <DrumMachine song={song} />
+//             </div>
+//         )
+//     }
+// }
 
 export default Grid
