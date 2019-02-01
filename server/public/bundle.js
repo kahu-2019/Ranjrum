@@ -124,7 +124,14 @@ var App = function App() {
       'React beats have begun!'
     ),
     _react2.default.createElement(_Display2.default, null),
-    _react2.default.createElement(_Grid2.default, null)
+    _react2.default.createElement(_Grid2.default, null),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement('img', { className: 'ranjit', src: '/images/gsquad.jpg', alt: '' })
   );
 };
 

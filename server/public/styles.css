@@ -4,6 +4,7 @@
   grid-template-columns: auto auto auto;
   background-color: rgb(27, 28, 29);
   padding: 3px;
+  
 }
 
 
@@ -13,6 +14,8 @@
   padding: 20px;
   -webkit-animation: color-change-2x 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate backwards;
   animation: color-change-2x 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate backwards; 
+  -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   font-size: 30px;
   text-align: center;
 }
@@ -23,7 +26,6 @@ button:active {
 
 .display-item{
   grid-template-columns: auto;
-   /* -webkit-animation: color-change-5x 8s linear infinite alternate both;  */
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 20px;
   font-size: 30px;
@@ -37,7 +39,7 @@ button:active {
  
   
 }
-h1, h3 {
+h1,  {
   -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 	        animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 
@@ -47,11 +49,7 @@ h1, h3 {
 	        animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
-.hello{
-  
- -webkit-animation: color-change-5x 8s linear infinite alternate both; 
 
-}
 
 
 .color-change-2x {
@@ -135,6 +133,14 @@ h1, h3 {
   }
 }
 
+.ranjit{
+  --webkit-animation: rotate-center 2.5s ease-in-out infinite both;
+  animation: rotate-center 2.5s ease-in-out infinite both;
+}
+.background{
+ -webkit-animation: color-change-5x 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate backwards;
+  animation: color-change-5x 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate backwards;
+}
 
 #display {
   display: -webkit-box;
@@ -151,3 +157,26 @@ h1, h3 {
   color: lightblue;
   background-color: rgba(51, 51, 51, 0.8);
   grid-column: 1 / -1; }
+
+
+  @-webkit-keyframes rotate-center {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  @keyframes rotate-center {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  
