@@ -117,11 +117,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var App = function App() {
   return _react2.default.createElement(
     'div',
-    { className: 'hello' },
+    null,
     _react2.default.createElement(
       'h1',
       null,
-      'BeatBox '
+      'React beats have begun!'
     ),
     _react2.default.createElement(_Display2.default, null),
     _react2.default.createElement(_Grid2.default, null)
@@ -230,73 +230,257 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Grid = function Grid() {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var sound = {
+    "Q": {
+        track: '/sounds/bassdrum.mp3',
+        desc: "BassDrum"
+    },
+    "W": {
+        track: "/sounds/hi-hat.mp3",
+        desc: "Hi-hat"
+    },
+    "E": {
+        track: "/sounds/im-thinking.mp3",
+        desc: "I'm-thinking"
+    },
+    "A": {
+        track: "/sounds/snare.mp3",
+        desc: "Snare"
+    },
+    "S": {
+        track: "/sounds/array-from.mp3",
+        desc: "Array.from()"
+    },
+    "D": {
+        track: "/sounds/arpo.mp3",
+        desc: "Arpo"
+    }
+};
+
+var Title = function Title(props) {
     return _react2.default.createElement(
-        "div",
-        { className: "grid-container" },
+        'div',
+        { className: 'title' },
         _react2.default.createElement(
-            "button",
-            { className: "grid-item" },
+            'div',
+            { className: 'titleContainer' },
             _react2.default.createElement(
-                "h3",
+                'h1',
                 null,
-                "Bass Drum"
+                props.text
             ),
-            " "
-        ),
-        _react2.default.createElement(
-            "button",
-            { className: "grid-item" },
             _react2.default.createElement(
-                "h3",
+                'h5',
                 null,
-                "Hi-hat"
-            )
-        ),
-        _react2.default.createElement(
-            "button",
-            { className: "grid-item" },
-            _react2.default.createElement(
-                "h3",
-                null,
-                "I'm thinking"
-            )
-        ),
-        _react2.default.createElement(
-            "button",
-            { className: "grid-item" },
-            _react2.default.createElement(
-                "h3",
-                null,
-                "Snare"
-            )
-        ),
-        _react2.default.createElement(
-            "button",
-            { className: "grid-item" },
-            _react2.default.createElement(
-                "h3",
-                null,
-                "Array.from()"
-            )
-        ),
-        _react2.default.createElement(
-            "button",
-            { className: "grid-item" },
-            _react2.default.createElement(
-                "h3",
-                null,
-                "Arpo"
+                props.subtext
             )
         )
     );
 };
+
+var Display = function Display(props) {
+    return _react2.default.createElement(
+        'div',
+        { id: 'display' },
+        props.output
+    );
+};
+
+var DrumPad = function (_React$Component) {
+    _inherits(DrumPad, _React$Component);
+
+    function DrumPad(props) {
+        _classCallCheck(this, DrumPad);
+
+        var _this = _possibleConstructorReturn(this, (DrumPad.__proto__ || Object.getPrototypeOf(DrumPad)).call(this, props));
+
+        _this.handleOnClick = _this.handleOnClick.bind(_this);
+        return _this;
+    }
+
+    _createClass(DrumPad, [{
+        key: 'handleOnClick',
+        value: function handleOnClick(event) {
+            var id = event.target.id.slice(-1);
+            var ref = event.target.children[0];
+            ref.pause();
+            ref.currentTime = 0;
+            ref.play();
+            window.display.setOutput(id);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'grid-container' },
+                _react2.default.createElement(
+                    'button',
+                    { id: this.props.drumPadId, className: 'grid-item', onClick: this.handleOnClick },
+                    _react2.default.createElement(
+                        'audio',
+                        { className: 'clip', src: this.props.sndSrc, id: this.props.clipId },
+                        'Your browser does not support the audio element.'
+                    ),
+                    this.props.text
+                )
+            );
+        }
+    }]);
+
+    return DrumPad;
+}(_react2.default.Component);
+
+var ids = ["Q", "W", "E", "A", "S", "D"];
+var pads = ids.map(function (desc) {
+    return _react2.default.createElement(DrumPad, { key: "pad_" + desc,
+        drumPadId: "uid" + desc,
+        clipId: desc,
+        sndSrc: sound[desc].track,
+        text: desc });
+});
+
+var Grid = function (_React$Component2) {
+    _inherits(Grid, _React$Component2);
+
+    function Grid(props) {
+        _classCallCheck(this, Grid);
+
+        var _this2 = _possibleConstructorReturn(this, (Grid.__proto__ || Object.getPrototypeOf(Grid)).call(this, props));
+
+        _this2.state = { output: "" };
+        window.display = _this2;
+        _this2.setOutput = _this2.setOutput.bind(_this2);
+        _this2.handleKeyDown = _this2.handleKeyDown.bind(_this2);
+        _this2.playDrum = _this2.playDrum.bind(_this2);
+        _this2.playSound = _this2.playSound.bind(_this2);
+        return _this2;
+    }
+
+    _createClass(Grid, [{
+        key: 'setOutput',
+        value: function setOutput(id) {
+            this.setState({ output: sound[id].desc });
+        }
+    }, {
+        key: 'handleKeyDown',
+        value: function handleKeyDown(event) {
+
+            var keyPressed = event.key;
+            keyPressed = keyPressed.toUpperCase();
+
+            if (keyPressed === "q" || "Q" || "w" || "W" || "e" || "E" || "a" || "A" || "s" || "S" || "d" || "D") {
+
+                this.playDrum(keyPressed);
+            }
+        }
+    }, {
+        key: 'playDrum',
+        value: function playDrum(k) {
+            switch (k) {
+                case "Q":
+                    var elem = document.getElementById("Q");
+                    this.playSound(elem);
+                    this.setState({ output: sound["Q"].desc });
+                    break;
+                case "W":
+                    var elem = document.getElementById("W");
+                    this.playSound(elem);
+                    this.setState({ output: sound["W"].desc });
+                    break;
+                case "E":
+                    var elem = document.getElementById("E");
+                    this.playSound(elem);
+                    this.setState({ output: sound["E"].desc });
+                    break;
+                case "A":
+                    var elem = document.getElementById("A");
+                    this.playSound(elem);
+                    this.setState({ output: sound["A"].desc });
+                    break;
+                case "S":
+                    var elem = document.getElementById("S");
+                    this.playSound(elem);
+                    this.setState({ output: sound["S"].desc });
+                    break;
+                case "D":
+                    var elem = document.getElementById("D");
+                    this.playSound(elem);
+                    this.setState({ output: sound["D"].desc });
+                    break;
+            }
+        }
+    }, {
+        key: 'playSound',
+        value: function playSound(el) {
+            el.pause();
+            el.currentTime = 0;
+            el.play();
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { id: 'drum-machine', onKeyDown: this.handleKeyDown, tabIndex: '0' },
+                _react2.default.createElement(Title, { text: 'Ranjrum Machine',
+                    subtext: '' }),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'grid container' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'grid-container' },
+                        _react2.default.createElement(Display, { output: this.state.output }),
+                        pads
+                    )
+                )
+            );
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var app = document.getElementById("drum-machine");
+            app.focus();
+        }
+    }]);
+
+    return Grid;
+}(_react2.default.Component);
+
+// class Grid extends React.Component {
+//     constructor(props) {
+//         super(props)
+//     }
+//     render() {
+//         return (
+//             <div className="grid-container">
+//                 <button onClick={() => PubSub.publish('drum', { action: 'play' })} className="grid-item" >Bass Drum</button>
+//                 <button onClick={() => PubSub.publish('drum', { action: 'stop' })} className="grid-item">Hi-hat</button>
+//                 {/* <button className="grid-item">I'm thinking</button>
+//                 <button className="grid-item">Snare</button>
+//                 <button className="grid-item">Array.from()</button>
+//                 <button className="grid-item">Arpo</button> */}
+//                 <DrumMachine song={song} />
+//             </div>
+//         )
+//     }
+// }
+
 
 exports.default = Grid;
 
