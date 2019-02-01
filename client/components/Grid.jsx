@@ -63,13 +63,14 @@ class DrumPad extends React.Component {
 
     render() {
         return (
-            <div className="drum-pad-container">
-                <div id={this.props.drumPadId} className="drum-pad" onClick={this.handleOnClick}>
+            <div className="grid-container">
+                <button id={this.props.drumPadId} className="grid-item" onClick={this.handleOnClick}>
+
                     <audio className="clip" src={this.props.sndSrc} id={this.props.clipId}>
                         Your browser does not support the audio element.
                 </audio>
                     {this.props.text}
-                </div>
+                </button>
             </div>
 
         );
@@ -158,14 +159,14 @@ class Grid extends React.Component {
     render() {
         return (
             <div id="drum-machine" onKeyDown={this.handleKeyDown} tabIndex="0" >
-                <Title text="Drum Machine"
+                <Title text="Ranjrum Machine"
                     subtext="" />
-
-                <div className="main-container">
-                    <Display output={this.state.output} />
-                    {pads}
+                <div className="grid container">
+                    <div className="grid-container">
+                        <Display output={this.state.output} />
+                        {pads}
+                    </div>
                 </div>
-
             </div>
         );
     }

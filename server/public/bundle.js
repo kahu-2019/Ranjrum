@@ -238,10 +238,10 @@ var DrumPad = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                { className: 'drum-pad-container' },
+                { className: 'grid-container' },
                 _react2.default.createElement(
-                    'div',
-                    { id: this.props.drumPadId, className: 'drum-pad', onClick: this.handleOnClick },
+                    'button',
+                    { id: this.props.drumPadId, className: 'grid-item', onClick: this.handleOnClick },
                     _react2.default.createElement(
                         'audio',
                         { className: 'clip', src: this.props.sndSrc, id: this.props.clipId },
@@ -348,13 +348,17 @@ var Grid = function (_React$Component2) {
             return _react2.default.createElement(
                 'div',
                 { id: 'drum-machine', onKeyDown: this.handleKeyDown, tabIndex: '0' },
-                _react2.default.createElement(Title, { text: 'Drum Machine',
+                _react2.default.createElement(Title, { text: 'Ranjrum Machine',
                     subtext: '' }),
                 _react2.default.createElement(
                     'div',
-                    { className: 'main-container' },
-                    _react2.default.createElement(Display, { output: this.state.output }),
-                    pads
+                    { className: 'grid container' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'grid-container' },
+                        _react2.default.createElement(Display, { output: this.state.output }),
+                        pads
+                    )
                 )
             );
         }
