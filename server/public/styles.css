@@ -11,6 +11,8 @@
   background-color:  #d3d3d3;
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 20px;
+  -webkit-animation: color-change-2x 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate backwards;
+  animation: color-change-2x 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate backwards; 
   font-size: 30px;
   text-align: center;
 }
@@ -21,7 +23,7 @@ button:active {
 
 .display-item{
   grid-template-columns: auto;
-  /* -webkit-animation: color-change-5x 8s linear infinite alternate both; */
+   /* -webkit-animation: color-change-5x 8s linear infinite alternate both;  */
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 20px;
   font-size: 30px;
@@ -33,6 +35,16 @@ button:active {
   border-color:black;
   padding: 3px; 
  
+  
+}
+h1, h3 {
+  -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+
+}
+.tracking-in-expand {
+	-webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
 .hello{
@@ -41,6 +53,11 @@ button:active {
 
 }
 
+
+.color-change-2x {
+	-webkit-animation: color-change-2x 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate backwards;
+	        animation: color-change-2x 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate backwards;
+}
 @-webkit-keyframes color-change-5x {
   0% {
     background: #19dcea;
@@ -73,6 +90,48 @@ button:active {
   }
   100% {
     background: #3bd80d;
+  }
+}
+
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes color-change-2x {
+  0% {
+    background: hsl(61, 100%, 50%);
+  }
+  100% {
+    background: #1ef702;
+  }
+}
+@keyframes color-change-2x {
+  0% {
+    background: hsl(61, 100%, 50%);
+  }
+  100% {
+    background:  #1ef702;
   }
 }
 

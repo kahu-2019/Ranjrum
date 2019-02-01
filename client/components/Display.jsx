@@ -25,7 +25,7 @@ class Display extends React.Component {
 
         return(
             <div className="display-container">
-             <div className="display-item" style={this.state.style} onClick={clickHandler}>effects</div> 
+             <div className="display-item" style={this.state.style} onClick={clickHandler}><h3>Change Color</h3></div> 
              
             
             </div>

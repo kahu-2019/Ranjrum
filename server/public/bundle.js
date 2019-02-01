@@ -121,7 +121,7 @@ var App = function App() {
     _react2.default.createElement(
       'h1',
       null,
-      'React '
+      'BeatBox '
     ),
     _react2.default.createElement(_Display2.default, null),
     _react2.default.createElement(_Grid2.default, null)
@@ -199,7 +199,11 @@ var Display = function (_React$Component) {
                 _react2.default.createElement(
                     "div",
                     { className: "display-item", style: this.state.style, onClick: clickHandler },
-                    "effects"
+                    _react2.default.createElement(
+                        "h3",
+                        null,
+                        "Change Color"
+                    )
                 )
             );
         }
@@ -239,32 +243,57 @@ var Grid = function Grid() {
         _react2.default.createElement(
             "button",
             { className: "grid-item" },
-            "Bass Drum"
+            _react2.default.createElement(
+                "h3",
+                null,
+                "Bass Drum"
+            ),
+            " "
         ),
         _react2.default.createElement(
             "button",
             { className: "grid-item" },
-            "Hi-hat"
+            _react2.default.createElement(
+                "h3",
+                null,
+                "Hi-hat"
+            )
         ),
         _react2.default.createElement(
             "button",
             { className: "grid-item" },
-            "I'm thinking"
+            _react2.default.createElement(
+                "h3",
+                null,
+                "I'm thinking"
+            )
         ),
         _react2.default.createElement(
             "button",
             { className: "grid-item" },
-            "Snare"
+            _react2.default.createElement(
+                "h3",
+                null,
+                "Snare"
+            )
         ),
         _react2.default.createElement(
             "button",
             { className: "grid-item" },
-            "Array.from()"
+            _react2.default.createElement(
+                "h3",
+                null,
+                "Array.from()"
+            )
         ),
         _react2.default.createElement(
             "button",
             { className: "grid-item" },
-            "Arpo"
+            _react2.default.createElement(
+                "h3",
+                null,
+                "Arpo"
+            )
         )
     );
 };
